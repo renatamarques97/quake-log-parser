@@ -6,7 +6,7 @@ require "parser/rules"
 
 module Parser
   class Error < StandardError; end
-  # Your code goes here...
+
   class QuakeParser
     attr_reader :games, :current_game
 
@@ -27,13 +27,16 @@ module Parser
       log.close
     end
 
+    def games_summary
+      games.map(&:to_hash)
+    end
+
     def reset_status
       @games.clear
       @current_game = nil
     end
 
     def process_line(line)
-      p line
       if Parser::Rules.new_game?(line)
         process_new_game
       elsif Parser::Rules.new_player?(line)

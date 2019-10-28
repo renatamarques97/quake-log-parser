@@ -22,7 +22,15 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'parser'
+
+parser = Parser::QuakeParser.new
+parser.from_file(file_path)
+
+# Will return the inventory summary for all games
+parser.games_summary
+```
 
 ## Development
 
