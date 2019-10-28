@@ -6,8 +6,8 @@ require "parser/version"
 Gem::Specification.new do |spec|
   spec.name          = "parser"
   spec.version       = Parser::VERSION
-  spec.authors       = ["Marcle Rodrigues"]
-  spec.email         = ["maarclee@gmail.com"]
+  spec.authors       = ["Renata Marques"]
+  spec.email         = ["renata.nrmarques@gmail.com"]
 
   spec.summary       = %q{Write a short summary, because RubyGems requires one.}
   spec.description   = %q{Write a longer description or delete this line.}
@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
     spec.metadata["allowed_push_host"] = "'http://mygemserver.com'"
 
     spec.metadata["homepage_uri"] = spec.homepage
-    spec.metadata["source_code_uri"] = "Put your gem's public repo URL here."
-    spec.metadata["changelog_uri"] = "Put your gem's CHANGELOG.md URL here."
+    spec.metadata["source_code_uri"] = "http://github.com"
+    spec.metadata["changelog_uri"] = "http://github.com"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
