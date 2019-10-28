@@ -1,35 +1,37 @@
 RSpec.describe Game do
-  context "#remove_expired_items" do
-    let!(:current_time) { 0003 }
-    let!(:collected_at) { 0000 }
-    let!(:current_time_bigger) { 0004 }
-    let!(:collected_at_bigger) { 0000 }
-    let!(:current_time_smaller) { 0002 }
-    let!(:collected_at_smaller) { 0000 }
+  describe "#remove_expired_items" do
+    let!(:current_time) { 3 }
+    let!(:collected_at) { 0 }
+    let!(:current_time_bigger) { 4 }
+    let!(:collected_at_bigger) { 0 }
+    let!(:current_time_smaller) { 2 }
+    let!(:collected_at_smaller) { 0 }
     let!(:expiration_time) { 3 }
     let!(:result) {(current_time - collected_at)}
     let!(:result_bigger) {(current_time_bigger - collected_at_bigger)}
     let!(:result_smaller) {(current_time_smaller - collected_at_smaller)}
 
-    it "equal" do
-      subject { described_class.remove_expired_items(current_time) }
+    context "values" do
+      it "equal" do
+        subject { described_class.remove_expired_items(current_time) }
 
-      expect(result).to eq(expiration_time)
-    end
-    it "bigger" do
-      subject { described_class.remove_expired_items(current_time) }
+        expect(result).to eq(expiration_time)
+      end
+      it "bigger" do
+        subject { described_class.remove_expired_items(current_time) }
 
-      expect(result_bigger).to be >(expiration_time)
-    end
-    it "smaller" do
-      subject { described_class.remove_expired_items(current_time) }
+        expect(result_bigger).to be >(expiration_time)
+      end
+      it "smaller" do
+        subject { described_class.remove_expired_items(current_time) }
 
-      expect(result_smaller).to be <(expiration_time)
+        expect(result_smaller).to be <(expiration_time)
+      end
     end
   end
 
   it "#to_hash" do
-    let!(:hash) {  }
+    # let!(:hash) {  }
 
     subject { described_class.to_hash }
 
@@ -37,23 +39,31 @@ RSpec.describe Game do
   end
 
   it "#inventories" do
-    let!(:hash) {  }
-    
+    # let!(:hash) {  }
+
     subject { described_class.inventories }
 
     expect(false).to eq(false)
   end
 
-  it "#new_player" do
-    subject { described_class.new_player() }
+  context "#new_player" do
+    let!(:player) { Player.new("1") }
 
-    expect(false).to eq(false)
+    subject { described_class.new }
+    it "#" do
+      subject.new_player(player)
+      expect(subject.players["1"]).to eq(player)
+    end
   end
 
-  it "#add_item" do
-    subject { described_class.add_item() }
+  context "#add_item" do
+    let!(:item) { Item.new("gun", "309", "1") }
 
-    expect(false).to eq(false)
+    subject { described_class.new }
+    it "#" do
+      subject.add_item(item)
+      expect(subject.items).to contain_exactly(item)
+    end
   end
 
   it "#change_items_ownership" do
