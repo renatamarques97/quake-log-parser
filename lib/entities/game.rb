@@ -5,7 +5,7 @@ class Game
 
   def initialize
     @players = {}
-    @items = []
+    @items   = []
   end
 
   def remove_expired_items(current_time)
