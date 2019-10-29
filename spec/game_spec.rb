@@ -17,23 +17,26 @@ RSpec.describe Game do
 
         expect(result).to eq(expiration_time)
       end
+
       it "bigger" do
         subject { described_class.remove_expired_items(current_time) }
 
         expect(result_bigger).to be >(expiration_time)
       end
+
       it "smaller" do
         subject { described_class.remove_expired_items(current_time) }
 
         expect(result_smaller).to be <(expiration_time)
       end
+      
     end
   end
 
   describe "hash" do
     let!(:players) { {:players=>[]} }
 
-    context "valid parameters" do
+    context "valid output" do
       it "#to_hash" do
         subject { described_class.new }
 
@@ -70,24 +73,21 @@ RSpec.describe Game do
   end
 
   describe "#change_items_ownership" do
-    context "valid parameters" do
-      it "killed" do
-        subject { described_class.new }
+    subject { described_class.new }
 
+    context "valid output" do
+      it "killed" do
         expect(subject.change_items_ownership("1","2")).to eq([])
       end
 
       it "killed by world" do
-        subject { described_class.new }
-
         expect(subject.change_items_ownership("1","2", true)).to eq([])
       end
 
-      it "killed by himself" do
-        subject { described_class.new }
-
+      it "killed himself" do
         expect(subject.change_items_ownership("1","1")).to eq([])
       end
+      
     end
   end
 
