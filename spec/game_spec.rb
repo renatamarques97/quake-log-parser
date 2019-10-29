@@ -29,24 +29,25 @@ RSpec.describe Game do
 
         expect(result_smaller).to be <(expiration_time)
       end
-      
+
     end
   end
 
   describe "hash" do
     let!(:players) { {:players=>[]} }
 
-    context "valid output" do
-      it "#to_hash" do
+    context "#to_hash" do
+      it "valid output" do
         subject { described_class.new }
 
         expect(subject.to_hash).to eq(players)
       end
+      context "#inventories" do
+        it "valid output" do
+          subject { described_class.new }
 
-      it "#inventories" do
-        subject { described_class.new }
-
-        expect(subject.inventories).to eq({})
+          expect(subject.inventories).to eq({})
+        end
       end
     end
   end
@@ -87,7 +88,7 @@ RSpec.describe Game do
       it "killed himself" do
         expect(subject.change_items_ownership("1","1")).to eq([])
       end
-      
+
     end
   end
 
