@@ -35,7 +35,7 @@ class Game
     end.to_h
   end
 
-  def new_player(player)
+  def add_player(player)
     return player if players[player.id]
 
     players[player.id] = player

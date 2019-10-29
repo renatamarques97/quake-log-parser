@@ -63,7 +63,7 @@ module Parser
     def process_new_player(line)
       id = Parser::Rules.player_id(line)
       player = Player.new(id)
-      @current_game.new_player(player)
+      @current_game.add_player(player)
     end
 
     def process_player_change(line)
