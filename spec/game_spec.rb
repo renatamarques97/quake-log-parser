@@ -30,20 +30,21 @@ RSpec.describe Game do
     end
   end
 
-  it "#to_hash" do
-    # let!(:hash) {  }
+  describe "hash" do
+    context "#to_hash" do
+      it "" do
+        subject { described_class.new }
 
-    subject { described_class.to_hash }
+        expect(subject.to_hash).to eq({:players=>[]})
+      end
+    end
+    context "#inventories" do 
+      it "" do
+        subject { described_class.new }
 
-    # expect(subject).to eq(hash)
-  end
-
-  it "#inventories" do
-    # let!(:hash) {  }
-
-    subject { described_class.inventories }
-
-    expect(false).to eq(false)
+        expect(subject.inventories).to eq({})
+      end
+    end
   end
 
   context "#new_player" do
@@ -66,10 +67,26 @@ RSpec.describe Game do
     end
   end
 
-  it "#change_items_ownership" do
-    subject { described_class.change_items_ownership() }
+  describe "#change_items_ownership" do
+    context "" do
+      it "killed" do
+        subject { described_class.new }
 
-    expect(false).to eq(false)
+        expect(subject.change_items_ownership("1","2")).to eq([])
+      end
+
+      it "killed by world" do
+        subject { described_class.new }
+
+        expect(subject.change_items_ownership("1","2", true)).to eq([])
+      end
+
+      it "killed by himself" do
+        subject { described_class.new }
+
+        expect(subject.change_items_ownership("1","1")).to eq([])
+      end
+    end
   end
 
 end
