@@ -11,7 +11,7 @@ RSpec.describe Game do
     let!(:result_bigger) {(current_time_bigger - collected_at_bigger)}
     let!(:result_smaller) {(current_time_smaller - collected_at_smaller)}
 
-    context "values" do
+    context "valid parameters" do
       it "equal" do
         subject { described_class.remove_expired_items(current_time) }
 
@@ -31,15 +31,16 @@ RSpec.describe Game do
   end
 
   describe "hash" do
-    context "#to_hash" do
-      it "" do
+    let!(:players) { {:players=>[]} }
+
+    context "valid parameters" do
+      it "#to_hash" do
         subject { described_class.new }
 
-        expect(subject.to_hash).to eq({:players=>[]})
+        expect(subject.to_hash).to eq(players)
       end
-    end
-    context "#inventories" do 
-      it "" do
+
+      it "#inventories" do
         subject { described_class.new }
 
         expect(subject.inventories).to eq({})
@@ -47,28 +48,29 @@ RSpec.describe Game do
     end
   end
 
-  context "#new_player" do
-    let!(:player) { Player.new("1") }
+  describe "registration" do
+    context "valid parameters" do
+      let!(:player) { Player.new("1") }
 
-    subject { described_class.new }
-    it "#" do
-      subject.new_player(player)
-      expect(subject.players["1"]).to eq(player)
-    end
-  end
+      subject { described_class.new }
+      it "#new_player" do
+        subject.new_player(player)
+        expect(subject.players["1"]).to eq(player)
+      end
 
-  context "#add_item" do
-    let!(:item) { Item.new("gun", "309", "1") }
+      let!(:item) { Item.new("gun", "309", "1") }
 
-    subject { described_class.new }
-    it "#" do
-      subject.add_item(item)
-      expect(subject.items).to contain_exactly(item)
+      subject { described_class.new }
+      it "#add_item" do
+        subject.add_item(item)
+        expect(subject.items).to contain_exactly(item)
+      end
+
     end
   end
 
   describe "#change_items_ownership" do
-    context "" do
+    context "valid parameters" do
       it "killed" do
         subject { described_class.new }
 
