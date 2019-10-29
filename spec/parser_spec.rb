@@ -1,4 +1,4 @@
-RSpec.describe Parser do
+RSpec.describe Parser::QuakeParser do
   # it "#from_file" do
   #   expect(Parser::VERSION).not_to be nil
   # end
@@ -7,9 +7,14 @@ RSpec.describe Parser do
   #   expect(Parser::VERSION).not_to be nil
   # end
   #
-  # it "#reset_status" do
-  #   expect(Parser::VERSION).not_to be nil
-  # end
+  describe "#reset_status" do
+    subject { described_class.new }
+    context "" do
+      it "" do
+        expect(subject.reset_status).to be nil
+      end
+    end
+  end
   #
   # it "#process_line" do
   #   expect(Parser::VERSION).not_to be nil
